@@ -1,5 +1,6 @@
 package com.example.myEcomAppBE.gateway;
 
+import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
 
 import java.io.IOException;
@@ -7,4 +8,5 @@ import java.util.List;
 
 public interface EComProductsGateway {
     List<ProductsDTO> getAllProducts() throws IOException;
+    ProductDetailsDTO getProductById(Long id) throws Exception;
 }

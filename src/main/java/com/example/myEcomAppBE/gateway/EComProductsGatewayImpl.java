@@ -1,6 +1,8 @@
 package com.example.myEcomAppBE.gateway;
 
 import com.example.myEcomAppBE.dto.FakeStoreDTO;
+import com.example.myEcomAppBE.dto.FakeStoreProductDTO;
+import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
 import com.example.myEcomAppBE.gateway.API.FakeStoreProductsAPI;
 import org.springframework.stereotype.Component;
@@ -33,5 +35,20 @@ public class EComProductsGatewayImpl implements EComProductsGateway{
                         .category(product.getCategory())
                         .build())
                 .toList();
+    }
+
+    @Override
+    public ProductDetailsDTO getProductById(Long id) throws Exception {
+        FakeStoreProductDTO response = this.fakeStoreProductsAPI.getProductById(id).execute().body();
+        if(response == null) {
+            throw new Exception("Failed to fetch this product");
+        }
+        return ProductDetailsDTO.builder()
+                .id(response.getId())
+                .title(response.getTitle())
+                .price(response.getPrice())
+                .description(response.getDescription())
+                .category(response.getCategory())
+                .build();
     }
 }

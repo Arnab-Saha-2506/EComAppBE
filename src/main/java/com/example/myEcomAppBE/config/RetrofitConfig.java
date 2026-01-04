@@ -21,5 +21,4 @@ public class RetrofitConfig {
     public FakeStoreProductsAPI fakeStoreProductsAPI(Retrofit retrofit){
         return retrofit.create(FakeStoreProductsAPI.class);
     }
-
 }
