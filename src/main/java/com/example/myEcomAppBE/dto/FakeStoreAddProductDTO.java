@@ -1,0 +1,19 @@
+package com.example.myEcomAppBE.dto;
+
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+@Data
+@Builder
+@NoArgsConstructor
+@AllArgsConstructor
+public class FakeStoreAddProductDTO{
+	private String image;
+	private Double price;
+	private String description;
+	private int id;
+	private String title;
+	private String category;
+}
