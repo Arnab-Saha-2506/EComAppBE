@@ -2,14 +2,12 @@ package com.example.myEcomAppBE.dto;
 
 import lombok.*;
 
-import java.util.List;
-
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class FakeStoreDTO {
+public class FakeStoreProductsDTO {
     private String id;
     private String title;
     private String price;

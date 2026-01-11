@@ -6,7 +6,7 @@ import lombok.*;
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
-public class FakeStoreProductDTO{
+public class FakeStoreProductDetailsDTO {
 	private String image;
 	private Double price;
 	private String description;

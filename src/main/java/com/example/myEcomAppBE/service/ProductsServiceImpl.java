@@ -3,6 +3,7 @@ package com.example.myEcomAppBE.service;
 import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
 import com.example.myEcomAppBE.gateway.EComProductsGateway;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
 import java.io.IOException;
@@ -13,7 +14,7 @@ public class ProductsServiceImpl implements ProductsService{
 
     private final EComProductsGateway eComProductsGateway;
 
-    ProductsServiceImpl(EComProductsGateway eComProductsGateway){
+    ProductsServiceImpl(@Qualifier("eComProductsGatewayImpl") EComProductsGateway eComProductsGateway){
         this.eComProductsGateway = eComProductsGateway;
     }
 
