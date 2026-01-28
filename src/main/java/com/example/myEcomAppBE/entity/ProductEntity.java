@@ -1,15 +1,17 @@
-package com.example.myEcomAppBE.dto;
+package com.example.myEcomAppBE.entity;
 
+import com.example.myEcomAppBE.dto.FakeStoreRatingDTO;
+import jakarta.persistence.Entity;
 import lombok.*;
-import org.springframework.stereotype.Component;
 
+@Entity
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductsDTO {
-    private Long id;
+public class ProductEntity extends BaseEntity{
+//    private Long id;
     private String title;
     private String price;
     private String brand;
@@ -19,4 +21,5 @@ public class ProductsDTO {
     private boolean popular;
     private String category;
     private String image;
+//    private FakeStoreRatingDTO rating;
 }
