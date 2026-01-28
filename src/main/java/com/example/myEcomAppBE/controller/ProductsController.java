@@ -31,14 +31,14 @@ public class ProductsController {
 
     @PostMapping
     public ResponseEntity<ProductsDTO> addNewProduct(@RequestBody ProductsDTO dto){
-        throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,"Adding new products is not supported at the moment");
+//        throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,"Adding new products is not supported at the moment");
+        return ResponseEntity.ok(productsService.addNewProduct(dto));
     }
 
 
     @GetMapping("/{id}")
-    public ResponseEntity<ProductDetailsDTO> getProductById(@PathVariable Long id) throws Exception {
-        ProductDetailsDTO result = this.productsService.getProductById(id);
+    public ResponseEntity<ProductsDTO> getProductById(@PathVariable Long id) throws Exception {
+        ProductsDTO result = this.productsService.getProductById(id);
         return ResponseEntity.ok().body(result);
     }
-
 }

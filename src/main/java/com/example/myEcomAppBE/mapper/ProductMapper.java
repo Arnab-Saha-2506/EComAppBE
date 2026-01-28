@@ -4,6 +4,7 @@ import com.example.myEcomAppBE.dto.FakeStoreProductDetailsDTO;
 import com.example.myEcomAppBE.dto.FakeStoreProductsDTO;
 import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
+import com.example.myEcomAppBE.entity.ProductEntity;
 
 import java.util.List;
 
@@ -29,5 +30,34 @@ public class ProductMapper {
                 .build();
 
 //        return null;
+    }
+
+    public static ProductEntity toEntity(ProductsDTO dto){
+        return ProductEntity.builder()
+                .title(dto.getTitle())
+                .price(dto.getPrice())
+                .brand(dto.getBrand())
+                .description(dto.getDescription())
+                .discountPercentage(dto.getDiscountPercentage())
+                .color(dto.getColor())
+                .popular(dto.isPopular())
+                .category(dto.getCategory())
+                .image(dto.getImage())
+                .build();
+    }
+
+    public static ProductsDTO toDto(ProductEntity entity){
+        return ProductsDTO.builder()
+                .id(entity.getID())
+                .title(entity.getTitle())
+                .price(entity.getPrice())
+                .brand(entity.getBrand())
+                .description(entity.getDescription())
+                .discountPercentage(entity.getDiscountPercentage())
+                .color(entity.getColor())
+                .popular(entity.isPopular())
+                .category(entity.getCategory())
+                .image(entity.getImage())
+                .build();
     }
 }
