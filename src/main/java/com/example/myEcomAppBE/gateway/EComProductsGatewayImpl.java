@@ -24,20 +24,22 @@ public class EComProductsGatewayImpl implements EComProductsGateway{
 
     @Override
     public List<ProductsDTO> getAllProducts() throws IOException{
-//        FakeStoreDTO response = this.fakeStoreProductsAPI.getAllProducts().execute().body();
-        List<FakeStoreProductsDTO> response = this.fakeStoreProductsAPI.getAllProducts().execute().body();
-        if(response == null){
-            throw new IOException("Failed to fetch products from FakeStore API");
-        }
-        return ProductMapper.FakeStoreProductsDTOToProductsDTO(response);
+//        List<FakeStoreProductsDTO> response = this.fakeStoreProductsAPI.getAllProducts().execute().body();
+//        if(response == null){
+//            throw new IOException("Failed to fetch products from FakeStore API");
+//        }
+//        return ProductMapper.FakeStoreProductsDTOToProductsDTO(response);
+
+        return null;
     }
 
     @Override
     public ProductDetailsDTO getProductById(Long id) throws Exception {
-        FakeStoreProductDetailsDTO response = this.fakeStoreProductsAPI.getProductById(id).execute().body();
-        if(response == null) {
-            throw new Exception("Failed to fetch this product");
-        }
-        return ProductMapper.FakeStoreProductDetailsDTOToProductDetailsDTO(response);
+//        FakeStoreProductDetailsDTO response = this.fakeStoreProductsAPI.getProductById(id).execute().body();
+//        if(response == null) {
+//            throw new Exception("Failed to fetch this product");
+//        }
+//        return ProductMapper.FakeStoreProductDetailsDTOToProductDetailsDTO(response);
+        return null;
     }
 }
