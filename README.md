@@ -38,10 +38,13 @@ The application reads configuration from `src/main/resources/application.propert
 
 Create a `.env` (or use your environment manager) with values. Example .env:
 ```env
-SPRING_DATASOURCE_URL=jdbc:jdbc:mysql://localhost:<PORT_NUM>/myEcomAppDB
-SPRING_DATASOURCE_USERNAME=ecomuser
-SPRING_DATASOURCE_PASSWORD=secretpassword
-PORT=8080
+PORT = <Your_port_num>
+Base_URL = https://fakestoreapi.com/ (If you want to implement Fakestore API)
+DATASOURCE_URL = jdbc:mysql://localhost:<PORT_NUM>/myEcomAppDB
+DATASOURCE_USERNAME = <Your_DB_username>
+DATASOURCE_PASSWORD = <You_DB_password>
+DATASOURCE_DRIVER_CLASS_NAME = com.mysql.cj.jdbc.Driver
+HIBERNATE_DIALECT = org.hibernate.dialect.MySQL8Dialect
 ```
 
 ## Build & run
