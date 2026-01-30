@@ -12,12 +12,8 @@ Default branch: master
 - [Prerequisites](#prerequisites)
 - [Configuration](#configuration)
 - [Build & run](#build--run)
-- [Docker](#docker)
 - [Testing](#testing)
-- [API documentation](#api-documentation)
-- [Database migrations](#database-migrations)
 - [Contributing](#contributing)
-- [License](#license)
 - [Contact](#contact)
 
 ## Features
