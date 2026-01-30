@@ -17,6 +17,6 @@ public class ProductsDTO {
     private String discountPercentage;
     private String color;
     private boolean popular;
-    private String category;
+    private Long categoryId;
     private String image;
 }

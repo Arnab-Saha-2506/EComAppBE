@@ -27,22 +27,25 @@ public class FakeStoreRestTemplateGatewayImpl implements EComProductsGateway{
     }
     @Override
     public List<ProductsDTO> getAllProducts() throws IOException {
-        ResponseEntity<FakeStoreProductsDTO[]> responseEntity = this.restTemplate.getForEntity(retrofitBaseURL.getUrl() + "/products", FakeStoreProductsDTO[].class);
-        FakeStoreProductsDTO[] response = responseEntity.getBody();
-
-        if(response == null){
-            throw new IOException("Unable to fetch products from FakeStore API");
-        }
-        List<FakeStoreProductsDTO> responseList = Arrays.asList(response);
-        return ProductMapper.FakeStoreProductsDTOToProductsDTO(responseList);
+//        ResponseEntity<FakeStoreProductsDTO[]> responseEntity = this.restTemplate.getForEntity(retrofitBaseURL.getUrl() + "/products", FakeStoreProductsDTO[].class);
+//        FakeStoreProductsDTO[] response = responseEntity.getBody();
+//
+//        if(response == null){
+//            throw new IOException("Unable to fetch products from FakeStore API");
+//        }
+//        List<FakeStoreProductsDTO> responseList = Arrays.asList(response);
+//        return ProductMapper.FakeStoreProductsDTOToProductsDTO(responseList);
+        return null;
     }
     @Override
     public ProductDetailsDTO getProductById(Long id) throws Exception {
-        ResponseEntity<FakeStoreProductDetailsDTO>  responseEntity = this.restTemplate.getForEntity(retrofitBaseURL.getUrl() + "/products/" + id, FakeStoreProductDetailsDTO.class);
-        FakeStoreProductDetailsDTO response = responseEntity.getBody();
-        if(response == null){
-            throw new Exception("Failed to fetch this product");
-        }
-        return ProductMapper.FakeStoreProductDetailsDTOToProductDetailsDTO(response);
+//        ResponseEntity<FakeStoreProductDetailsDTO>  responseEntity = this.restTemplate.getForEntity(retrofitBaseURL.getUrl() + "/products/" + id, FakeStoreProductDetailsDTO.class);
+//        FakeStoreProductDetailsDTO response = responseEntity.getBody();
+//        if(response == null){
+//            throw new Exception("Failed to fetch this product");
+//        }
+//        return ProductMapper.FakeStoreProductDetailsDTOToProductDetailsDTO(response);
+
+        return null;
     }
 }

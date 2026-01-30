@@ -30,7 +30,7 @@ public class ProductsController {
     }
 
     @PostMapping
-    public ResponseEntity<ProductsDTO> addNewProduct(@RequestBody ProductsDTO dto){
+    public ResponseEntity<ProductsDTO> addNewProduct(@RequestBody ProductsDTO dto) throws Exception{
 //        throw new ResponseStatusException(HttpStatus.SERVICE_UNAVAILABLE,"Adding new products is not supported at the moment");
         return ResponseEntity.ok(productsService.addNewProduct(dto));
     }
