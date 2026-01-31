@@ -1,9 +1,6 @@
 package com.example.myEcomAppBE.mapper;
 
-import com.example.myEcomAppBE.dto.FakeStoreProductDetailsDTO;
-import com.example.myEcomAppBE.dto.FakeStoreProductsDTO;
-import com.example.myEcomAppBE.dto.ProductDetailsDTO;
-import com.example.myEcomAppBE.dto.ProductsDTO;
+import com.example.myEcomAppBE.dto.*;
 import com.example.myEcomAppBE.entity.CategoryEntity;
 import com.example.myEcomAppBE.entity.ProductEntity;
 
@@ -59,6 +56,21 @@ public class ProductMapper {
                 .popular(entity.isPopular())
                 .categoryId(entity.getCategory().getId())
                 .image(entity.getImage())
+                .build();
+    }
+
+    public static ProductCategoryDTO toDtoWithCategory(ProductEntity entity){
+        return ProductCategoryDTO.builder()
+                .id(entity.getId())
+                .title(entity.getTitle())
+                .price(entity.getPrice())
+                .brand(entity.getBrand())
+                .description(entity.getDescription())
+                .discountPercentage(entity.getDiscountPercentage())
+                .color(entity.getColor())
+                .popular(entity.isPopular())
+                .image(entity.getImage())
+                .category(CategoryMapper.toDTO(entity.getCategory()))
                 .build();
     }
 }

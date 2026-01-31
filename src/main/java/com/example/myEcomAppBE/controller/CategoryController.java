@@ -1,5 +1,6 @@
 package com.example.myEcomAppBE.controller;
 
+import com.example.myEcomAppBE.dto.AllProductsOfCategoryDTO;
 import com.example.myEcomAppBE.dto.CategoryDTO;
 import com.example.myEcomAppBE.service.CategoryService;
 import org.springframework.http.ResponseEntity;
@@ -38,6 +39,13 @@ public class CategoryController {
     public ResponseEntity<Void> deleteCategoryById(@PathVariable Long id) throws Exception{
         categoryService.deleteCategoryById(id);
         return ResponseEntity.ok().build();
+    }
+
+    //GetAllProductsOfCategory
+    @GetMapping("/{categoryId}/products")
+    public ResponseEntity<AllProductsOfCategoryDTO> getAllProductsOfCategory(@PathVariable Long categoryId) throws Exception{
+        AllProductsOfCategoryDTO response = categoryService.getAllProductsOfCategory(categoryId);
+        return ResponseEntity.ok().body(response);
     }
 
 }

@@ -1,8 +1,10 @@
 package com.example.myEcomAppBE.service;
 
+import com.example.myEcomAppBE.dto.AllProductsOfCategoryDTO;
 import com.example.myEcomAppBE.dto.CategoryDTO;
 import com.example.myEcomAppBE.entity.CategoryEntity;
 import com.example.myEcomAppBE.mapper.CategoryMapper;
+import com.example.myEcomAppBE.mapper.GetAllProductsOfCategoryMapper;
 import com.example.myEcomAppBE.repository.EComCategoryRepository;
 import org.springframework.stereotype.Service;
 
@@ -43,7 +45,12 @@ public class CategoryServiceImpl implements CategoryService{
 
     @Override
     public void deleteCategoryById(Long id) throws Exception {
-        eComCategoryRepository.deleteById(id);
+        try{
+            eComCategoryRepository.deleteById(id);
+        }
+        catch(Exception e) {
+            throw new Exception("Category not found with id: " + id);
+        }
     }
 
     @Override
@@ -55,5 +62,13 @@ public class CategoryServiceImpl implements CategoryService{
         catch (Exception e) {
             throw new Exception("Category not found with id: " + id);
         }
+    }
+
+    @Override
+    public AllProductsOfCategoryDTO getAllProductsOfCategory(Long categoryId) throws Exception{
+        CategoryEntity entity = eComCategoryRepository.getReferenceById(categoryId);
+        return GetAllProductsOfCategoryMapper.toDTO(entity);
+
+//        return null;
     }
 }
