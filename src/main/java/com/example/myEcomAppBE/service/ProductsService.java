@@ -15,4 +15,5 @@ public interface ProductsService {
     ProductsDTO addNewProduct(ProductsDTO dto) throws Exception;
     void deleteProductById(Long id) throws Exception;
     ProductCategoryDTO getProductWithCategory(Long id) throws Exception;
+    List<ProductsDTO> getCheapProducts(int upperLimit) throws Exception;
 }

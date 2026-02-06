@@ -11,4 +11,5 @@ public interface CategoryService {
     void deleteCategoryById(Long id) throws Exception;
     CategoryDTO getCategoryById(Long id) throws Exception;
     AllProductsOfCategoryDTO getAllProductsOfCategory(Long categoryId) throws Exception;
+    CategoryDTO getCategoryByName(String name)  throws Exception;
 }

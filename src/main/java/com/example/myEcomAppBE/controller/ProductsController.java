@@ -57,4 +57,11 @@ public class ProductsController {
         return ResponseEntity.ok().body(response);
     }
     //GetProductsByIDs
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<ProductsDTO>> getCheapProducts(@RequestParam(required = true) int UpperLimit) throws Exception{
+        List<ProductsDTO> response = productsService.getCheapProducts(UpperLimit);
+        return ResponseEntity.ok().body(response);
+    }
+
 }

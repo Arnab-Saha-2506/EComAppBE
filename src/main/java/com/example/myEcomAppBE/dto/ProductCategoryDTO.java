@@ -10,7 +10,7 @@ import lombok.*;
 public class ProductCategoryDTO {
     private Long id;
     private String title;
-    private String price;
+    private double price;
     private String brand;
     private String description;
     private String discountPercentage;

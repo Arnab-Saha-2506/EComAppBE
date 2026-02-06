@@ -71,4 +71,12 @@ public class CategoryServiceImpl implements CategoryService{
 
 //        return null;
     }
+
+    @Override
+    public CategoryDTO getCategoryByName(String name) throws Exception{
+        CategoryEntity responseEntity = eComCategoryRepository.findByName(name)
+                .orElseThrow(() -> new Exception("Category not found with name: " + name));
+        return CategoryMapper.toDTO(responseEntity);
+
+    }
 }

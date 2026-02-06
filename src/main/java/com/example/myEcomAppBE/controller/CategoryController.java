@@ -19,8 +19,14 @@ public class CategoryController {
     }
 
     @GetMapping
-    public ResponseEntity<List<CategoryDTO>> getCategories() throws Exception{
-        return ResponseEntity.ok().body(categoryService.getCategories());
+    public ResponseEntity<?> getCategories(@RequestParam(required = false) String name) throws Exception{
+        if(name != null && !name.isBlank()){
+            CategoryDTO response = categoryService.getCategoryByName(name);
+            return ResponseEntity.ok().body(response);
+        }
+        else{
+            return ResponseEntity.ok().body(categoryService.getCategories());
+        }
     }
 
     @PostMapping
@@ -47,5 +53,6 @@ public class CategoryController {
         AllProductsOfCategoryDTO response = categoryService.getAllProductsOfCategory(categoryId);
         return ResponseEntity.ok().body(response);
     }
+
 
 }

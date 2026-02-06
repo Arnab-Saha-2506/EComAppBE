@@ -92,4 +92,20 @@ public class ProductsServiceImpl implements ProductsService{
             throw new RuntimeException("Couldn't find any product with id: "+id);
         }
     }
+
+    @Override
+    public List<ProductsDTO> getCheapProducts(int upperLimit) throws Exception{
+        try {
+            List<ProductEntity> productLists = repository.findByPriceLessThanEqual(upperLimit);
+            if(productLists.isEmpty()){
+                throw new Exception("No products found with price less than or equal to: " + upperLimit);
+            }
+            return productLists.stream()
+                    .map(ProductMapper::toDto)
+                    .toList();
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+//        return null;
+    }
 }
