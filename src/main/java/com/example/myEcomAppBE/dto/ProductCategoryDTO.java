@@ -1,14 +1,13 @@
 package com.example.myEcomAppBE.dto;
 
 import lombok.*;
-import org.springframework.stereotype.Component;
 
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ProductsDTO {
+public class ProductCategoryDTO {
     private Long id;
     private String title;
     private double price;
@@ -17,6 +16,6 @@ public class ProductsDTO {
     private String discountPercentage;
     private String color;
     private boolean popular;
-    private Long categoryId;
     private String image;
+    private CategoryDTO category;
 }

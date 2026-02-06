@@ -1,6 +1,7 @@
 package com.example.myEcomAppBE.controller;
 
 import com.example.myEcomAppBE.dto.FakeStoreAddProductDTO;
+import com.example.myEcomAppBE.dto.ProductCategoryDTO;
 import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
 import com.example.myEcomAppBE.service.ProductsService;
@@ -36,9 +37,31 @@ public class ProductsController {
     }
 
 
-    @GetMapping("/{id}")
+    @GetMapping("/{id}/blabla")
     public ResponseEntity<ProductsDTO> getProductById(@PathVariable Long id) throws Exception {
         ProductsDTO result = this.productsService.getProductById(id);
         return ResponseEntity.ok().body(result);
     }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deleteProductById(@PathVariable Long id) throws Exception {
+        productsService.deleteProductById(id);
+        return ResponseEntity.ok().build();
+    }
+    //GetProductWithCategory
+
+
+    @GetMapping("/{id}")
+    public ResponseEntity<ProductCategoryDTO> getProductWithCategory(@PathVariable Long id) throws Exception{
+        ProductCategoryDTO response = productsService.getProductWithCategory(id);
+        return ResponseEntity.ok().body(response);
+    }
+    //GetProductsByIDs
+
+    @GetMapping("/filter")
+    public ResponseEntity<List<ProductsDTO>> getCheapProducts(@RequestParam(required = true) int UpperLimit) throws Exception{
+        List<ProductsDTO> response = productsService.getCheapProducts(UpperLimit);
+        return ResponseEntity.ok().body(response);
+    }
+
 }

@@ -1,5 +1,6 @@
 package com.example.myEcomAppBE.service;
 
+import com.example.myEcomAppBE.dto.ProductCategoryDTO;
 import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
 import com.example.myEcomAppBE.entity.CategoryEntity;
@@ -70,5 +71,41 @@ public class ProductsServiceImpl implements ProductsService{
         } catch (Exception e) {
                 throw new Exception("Category not found with id: " + dto.getCategoryId());
         }
+    }
+
+    @Override
+    public void deleteProductById(Long id) throws Exception {
+        try{
+            repository.deleteById(id);
+        } catch (Exception e) {
+            throw new Exception("Product not found with id: " + id);
+        }
+    }
+
+    @Override
+    public ProductCategoryDTO getProductWithCategory(Long id) throws Exception{
+        try{
+            ProductEntity entity = repository.getReferenceById(id);
+            return ProductMapper.toDtoWithCategory(entity);
+//            return null;
+        } catch (Exception e) {
+            throw new RuntimeException("Couldn't find any product with id: "+id);
+        }
+    }
+
+    @Override
+    public List<ProductsDTO> getCheapProducts(int upperLimit) throws Exception{
+        try {
+            List<ProductEntity> productLists = repository.findByPriceLessThanEqual(upperLimit);
+            if(productLists.isEmpty()){
+                throw new Exception("No products found with price less than or equal to: " + upperLimit);
+            }
+            return productLists.stream()
+                    .map(ProductMapper::toDto)
+                    .toList();
+        } catch (Exception e) {
+            throw new Exception(e);
+        }
+//        return null;
     }
 }
