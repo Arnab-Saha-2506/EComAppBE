@@ -5,6 +5,7 @@ import com.example.myEcomAppBE.dto.ProductDetailsDTO;
 import com.example.myEcomAppBE.dto.ProductsDTO;
 import com.example.myEcomAppBE.entity.CategoryEntity;
 import com.example.myEcomAppBE.entity.ProductEntity;
+import com.example.myEcomAppBE.exception.ProductNotFoundException;
 import com.example.myEcomAppBE.gateway.EComProductsGateway;
 import com.example.myEcomAppBE.mapper.ProductMapper;
 import com.example.myEcomAppBE.repository.EComCategoryRepository;
@@ -89,7 +90,7 @@ public class ProductsServiceImpl implements ProductsService{
             return ProductMapper.toDtoWithCategory(entity);
 //            return null;
         } catch (Exception e) {
-            throw new RuntimeException("Couldn't find any product with id: "+id);
+            throw new ProductNotFoundException("Couldn't find any product with id: "+id);
         }
     }
 
