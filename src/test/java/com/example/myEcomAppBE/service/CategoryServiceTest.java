@@ -13,10 +13,12 @@ import org.mockito.junit.jupiter.MockitoExtension;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
-import static org.mockito.Mockito.when;
+import static org.mockito.ArgumentMatchers.any;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 public class CategoryServiceTest {
@@ -52,5 +54,45 @@ public class CategoryServiceTest {
 
         //Assert
         assertEquals(resultList.size(), 2);
+        verify(eComCategoryRepository, times(1)).findAll();
+        assertEquals(resultList.get(0).getName(), "Electronics");
+    }
+
+    @Test
+    void addCategoryTest_shouldAddCategory() throws Exception{
+        //Arrange
+        CategoryEntity category1 = CategoryEntity.builder()
+                .name("Sports")
+                .build();
+        category1.setId(1L);
+
+        String categoryName = "Sports";
+
+        when(eComCategoryRepository.save(any(CategoryEntity.class))).thenReturn(category1);
+
+        //Act
+        CategoryDTO resultDTO = categoryService.addCategory(categoryName);
+
+        //Assert
+        assertEquals(resultDTO.getName(), "Sports");
+        verify(eComCategoryRepository, times(1)).save(any(CategoryEntity.class));
+    }
+
+    @Test
+    void getCategoryByName_shouldReturnCategoryByName() throws Exception{
+        //Arrange
+        CategoryEntity category1 = CategoryEntity.builder()
+                .name("Sports")
+                .build();
+        category1.setId(1L);
+
+        when(eComCategoryRepository.findByName(anyString())).thenReturn(Optional.of(category1));
+
+        //Act
+        CategoryDTO resultDTO = categoryService.getCategoryByName("sports");
+
+        //Assert
+        assertEquals(resultDTO.getName(), "Sports");
+        verify(eComCategoryRepository, times(1)).findByName(anyString());
     }
 }
