@@ -65,6 +65,12 @@ java -jar build/libs/<artifact-name>.jar
 
 Replace `<artifact-name>.jar` with the actual JAR filename produced by the build.
 
+## Get an overall idea of the APIs used
+```bash
+# After building your application, hit "localhost:<Port_num>/swagger-ui/index.html" in your browser.
+```
+In this project, port number is 3001.
+
 ## Testing
 Run unit and integration tests with the build tool:
 
